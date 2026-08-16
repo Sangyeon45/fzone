@@ -1,0 +1,199 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>에프존</title><style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,"Noto Sans KR",sans-serif;color:#222}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}.wrap{width:min(1180px,92%);margin:auto}
+header{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #eee}.nav{height:74px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:28px;font-weight:900}nav{display:flex;gap:26px;font-weight:700}.menu{display:none;border:0;background:none;font-size:30px;cursor:pointer;padding:8px;line-height:1;position:relative;z-index:10001}
+.hero{padding:56px 0;background:#fafafa}.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}.hero-photo{display:grid;grid-template-columns:1fr 1fr;gap:12px}.hero-photo img{aspect-ratio:1;object-fit:cover;border-radius:16px}.eyebrow{font-size:13px;letter-spacing:2px;font-weight:800}h1{font-size:clamp(42px,6vw,72px);margin:14px 0}h2{font-size:38px;margin:10px 0 18px}.muted{color:#777;line-height:1.8}
+section{padding:78px 0}.gallery,.brand-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{margin:0;border:1px solid #eee;border-radius:14px;overflow:hidden}.card img{width:100%;aspect-ratio:1;object-fit:cover}.card figcaption{padding:12px 14px;font-weight:700}.extra{display:none}.extra.open{display:grid}.more{display:block;margin:28px auto 0;padding:12px 24px;border:1px solid #222;border-radius:999px;background:#fff;font-weight:800}.brand-card{padding:28px;border:1px solid #eee;border-radius:16px}.contact{background:#08233f;color:#fff}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}.info{display:grid;gap:14px}footer{padding:30px 0;border-top:1px solid #eee;color:#777}
+.lightbox{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.9);align-items:center;justify-content:center}.lightbox.open{display:flex}.lightbox img{max-width:92vw;max-height:88vh}.lb{position:absolute;color:#fff;background:none;border:0;font-size:40px}.close{right:18px;top:8px}.prev{left:15px;top:50%}.next{right:15px;top:50%}
+@media(max-width:800px){nav{display:none}header.open nav{display:flex;position:absolute;top:74px;left:0;right:0;background:#fff;flex-direction:column;padding:10px 6%;z-index:10000;box-shadow:0 6px 12px rgba(0,0,0,.08);pointer-events:auto}nav a{padding:14px 0;display:block;touch-action:manipulation}.menu{display:block;position:relative;z-index:10001;pointer-events:auto;touch-action:manipulation}.hero-grid{grid-template-columns:1fr}.gallery,.brand-grid{grid-template-columns:repeat(2,1fr);gap:10px}.card figcaption{display:none}.contact-grid{grid-template-columns:1fr}section{padding:56px 0}}
+
+.contact{background:#000;color:#fff}
+.contact .muted,.contact .info{color:#fff}
+.contact a{color:#fff}
+.contact .eyebrow{color:#fff}
+.contact h2{font-size:42px;margin-bottom:38px}
+
+
+.contact .info{font-size:18px;line-height:1.9}
+.contact .info > div + div{margin-top:18px}
+.contact .ad-refusal{margin-top:42px;padding-top:20px;border-top:1px solid rgba(255,255,255,.25);font-size:17px;text-align:center}
+
+
+.contact .eyebrow{font-size:16px}
+.contact h2{font-size:42px;margin-bottom:38px}
+.contact .info{font-size:19px;line-height:2}
+.contact .info > div + div{margin-top:22px}
+.brand-link{font:inherit;text-align:left;cursor:pointer}
+.brand-link span{display:block;margin-top:12px;color:#777;font-size:14px}
+.brand-gallery-panel{display:none;margin-top:34px}
+.brand-gallery-panel.open{display:block}
+.brand-panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.brand-panel-head h3{font-size:28px;margin:0}
+#brandPanelClose{border:0;background:none;font-size:34px;cursor:pointer}
+
+
+.section-actions{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:28px}
+.section-actions .more{margin:0}
+.home-btn,.panel-actions button,.lb-actions button{padding:10px 18px;border:1px solid #222;border-radius:999px;background:#fff;font-weight:800;cursor:pointer}
+.panel-actions{display:flex;align-items:center;gap:8px}
+.brand-panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.lb-actions button{border-color:#fff;background:rgba(0,0,0,.45);color:#fff}
+
+
+header{background:#08233f;color:#fff;border-bottom:1px solid #08233f}
+header .logo,header nav a{color:#fff}
+.menu{color:#fff}
+
+
+/* Contact us final color override */
+section.contact#contact {
+  background-color: #08233f !important;
+  color: #ffffff !important;
+}
+section.contact#contact .eyebrow,
+section.contact#contact h2,
+section.contact#contact .info,
+section.contact#contact .info b,
+section.contact#contact .info a,
+section.contact#contact .muted,
+section.contact#contact .ad-refusal {
+  color: #ffffff !important;
+}
+
+
+@media(max-width:800px){
+  header.open nav{background:#fff !important}
+  header.open nav a{color:#08233f !important}
+}
+
+</style></head><body>
+<header id="header"><div class="wrap nav"><a class="logo" href="#home">에프존</a><nav>
+<a href="#products">Gallery</a>
+<a href="#brands">Brand</a>
+<a href="#contact">Contact us</a>
+</nav><button class="menu" id="menu">☰</button></div></header>
+<section class="hero" id="home"><div class="wrap hero-grid"><div><div class="eyebrow">FZONE</div><h1>에프존</h1><p class="muted">유아 및 반려동물 침구류 전문 제조업체입니다.</p></div><div class="hero-photo"><img src="assets/wise_13.jpeg" alt="에프존 대표 이미지"></div></div></section>
+
+
+
+<section id="products">
+  <div class="wrap">
+    <div class="eyebrow">GALLERY</div>
+    <h2>Gallery</h2>
+    <div class="gallery" id="galleryPreview">
+      <figure class="card"><img src="assets/baby_01.jpeg" alt="BabyDorme"></figure><figure class="card"><img src="assets/baby_02.jpeg" alt="BabyDorme"></figure><figure class="card"><img src="assets/baby_03.jpeg" alt="BabyDorme"></figure><figure class="card"><img src="assets/baby_04.jpeg" alt="BabyDorme"></figure><figure class="card"><img src="assets/baby_05.jpeg" alt="BabyDorme"></figure><figure class="card"><img src="assets/baby_06.jpeg" alt="BabyDorme"></figure><figure class="card"><img src="assets/baby_07.jpeg" alt="BabyDorme"></figure><figure class="card"><img src="assets/baby_08.jpeg" alt="BabyDorme"></figure>
+    </div>
+    <div class="gallery extra" id="galleryAll">
+      <figure class="card"><img src="assets/baby_09.jpeg" alt="BabyDorme"></figure><figure class="card"><img src="assets/baby_10.jpeg" alt="BabyDorme"></figure><figure class="card"><img src="assets/wise_01.jpeg" alt="Wisemama"></figure><figure class="card"><img src="assets/wise_02.jpeg" alt="Wisemama"></figure><figure class="card"><img src="assets/wise_03.jpeg" alt="Wisemama"></figure><figure class="card"><img src="assets/wise_04.jpeg" alt="Wisemama"></figure><figure class="card"><img src="assets/wise_05.jpeg" alt="Wisemama"></figure><figure class="card"><img src="assets/wise_06.jpeg" alt="Wisemama"></figure><figure class="card"><img src="assets/wise_07.jpeg" alt="Wisemama"></figure><figure class="card"><img src="assets/wise_08.jpeg" alt="Wisemama"></figure><figure class="card"><img src="assets/wise_09.jpeg" alt="Wisemama"></figure><figure class="card"><img src="assets/wise_10.jpeg" alt="Wisemama"></figure><figure class="card"><img src="assets/wise_11.jpeg" alt="Wisemama"></figure><figure class="card"><img src="assets/wise_12.jpeg" alt="Wisemama"></figure><figure class="card"><img src="assets/wise_13.jpeg" alt="Wisemama"></figure><figure class="card"><img src="assets/wise_14.jpeg" alt="Wisemama"></figure><figure class="card"><img src="assets/cottoni_01.jpeg" alt="CottoniHome"></figure><figure class="card"><img src="assets/cottoni_02.jpeg" alt="CottoniHome"></figure><figure class="card"><img src="assets/cottoni_03.jpeg" alt="CottoniHome"></figure><figure class="card"><img src="assets/cottoni_04.jpeg" alt="CottoniHome"></figure><figure class="card"><img src="assets/cottoni_05.jpeg" alt="CottoniHome"></figure><figure class="card"><img src="assets/cottoni_06.jpeg" alt="CottoniHome"></figure><figure class="card"><img src="assets/cottoni_07.jpeg" alt="CottoniHome"></figure><figure class="card"><img src="assets/cottoni_08.jpeg" alt="CottoniHome"></figure><figure class="card"><img src="assets/cottoni_09.jpeg" alt="CottoniHome"></figure><figure class="card"><img src="assets/cottoni_10.jpeg" alt="CottoniHome"></figure><figure class="card"><img src="assets/cottoni_11.jpeg" alt="CottoniHome"></figure><figure class="card"><img src="assets/cottoni_12.jpeg" alt="CottoniHome"></figure><figure class="card"><img src="assets/ahtty_01.jpeg" alt="Ahttyblanc"></figure><figure class="card"><img src="assets/ahtty_02.jpeg" alt="Ahttyblanc"></figure><figure class="card"><img src="assets/ahtty_03.jpeg" alt="Ahttyblanc"></figure><figure class="card"><img src="assets/ahtty_04.jpeg" alt="Ahttyblanc"></figure><figure class="card"><img src="assets/ahtty_05.jpeg" alt="Ahttyblanc"></figure><figure class="card"><img src="assets/ahtty_06.jpeg" alt="Ahttyblanc"></figure><figure class="card"><img src="assets/ahtty_07.jpeg" alt="Ahttyblanc"></figure>
+    </div>
+    <div class="section-actions"><button class="more" id="galleryMore" type="button">MORE →</button><button class="home-btn" type="button" data-home="#home">HOME</button></div>
+  </div>
+</section>
+
+<section id="brands">
+  <div class="wrap">
+    <div class="eyebrow">BRAND</div>
+    <h2>Brand</h2>
+    <div class="brand-grid">
+      <button class="brand-card brand-link" type="button" data-brand="BabyDorme"><h3>BabyDorme</h3><span>View photos →</span></button><button class="brand-card brand-link" type="button" data-brand="Wisemama"><h3>Wisemama</h3><span>View photos →</span></button><button class="brand-card brand-link" type="button" data-brand="CottoniHome"><h3>CottoniHome</h3><span>View photos →</span></button><button class="brand-card brand-link" type="button" data-brand="Ahttyblanc"><h3>Ahttyblanc</h3><span>View photos →</span></button>
+    <button class="brand-card brand-link" type="button" data-brand="Koalacompany"><h3>Koala company</h3><span>View photos →</span></button></div>
+    <div class="brand-gallery-panel" id="brandGalleryPanel">
+      <div class="brand-panel-head">
+        <h3 id="brandPanelTitle"></h3>
+        <div class="panel-actions"><button type="button" id="brandPanelLess">LESS</button><button type="button" id="brandPanelHome">HOME</button><button type="button" id="brandPanelClose">×</button></div>
+      </div>
+      <div class="gallery" id="brandGallery"></div>
+    </div>
+  </div>
+</section>
+<section class="contact" id="contact"><div class="wrap">
+<h2>Contact us</h2>
+<div class="contact-grid">
+<div class="info">
+<div><b>주소</b><br><a href="https://map.naver.com/p/search/경기도 김포시 양곡3로1번길81 1층" target="_blank" rel="noopener">경기도 김포시 양곡3로1번길81 1층</a></div>
+<div><b>전화</b><br><a href="tel:0319977624">031-997-7624</a></div><div><b>팩스</b><br>031-997-7625</div>
+<div><b>이메일</b><br><a href="mailto:linect@naver.com">linect@naver.com</a></div>
+</div>
+<div class="info">
+<div><b>대표</b><br>안상연</div>
+<div><b>사업자등록번호</b><br>128-35-48696</div>
+<div><b>통신판매업 신고번호</b><br>제2012-경기김포-0495호</div>
+</div>
+</div></div><div class="ad-refusal">광고업체 연락은 정중히 사양합니다.</div></section>
+
+<footer><div class="wrap">에프존 · 대표 안상연 · 사업자등록번호 128-35-48696 · 통신판매업 신고번호 제2012-경기김포-0495호</div></footer>
+<div class="lightbox" id="lb"><button class="lb close">×</button><button class="lb prev">‹</button><img id="big" src=""><button class="lb next">›</button></div>
+<script>
+
+const h = document.getElementById('header');
+const menuButton = document.getElementById('menu');
+
+if (h && menuButton) {
+  menuButton.addEventListener('click', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    h.classList.toggle('open');
+  });
+
+  document.querySelectorAll('nav a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      h.classList.remove('open');
+    });
+  });
+}
+
+const galleryMore=document.getElementById('galleryMore');
+const galleryAll=document.getElementById('galleryAll');
+if(galleryMore){
+  galleryMore.addEventListener('click',()=>{
+    galleryAll.classList.toggle('open');
+    galleryMore.textContent=galleryAll.classList.contains('open')?'CLOSE':'MORE →';
+  });
+}
+
+const brandPhotos = {'BabyDorme': ['assets/baby_01.jpeg', 'assets/baby_02.jpeg', 'assets/baby_03.jpeg', 'assets/baby_04.jpeg', 'assets/baby_05.jpeg', 'assets/baby_06.jpeg', 'assets/baby_07.jpeg', 'assets/baby_08.jpeg', 'assets/baby_09.jpeg', 'assets/baby_10.jpeg'], 'Wisemama': ['assets/wise_01.jpeg', 'assets/wise_02.jpeg', 'assets/wise_03.jpeg', 'assets/wise_04.jpeg', 'assets/wise_05.jpeg', 'assets/wise_06.jpeg', 'assets/wise_07.jpeg', 'assets/wise_08.jpeg', 'assets/wise_09.jpeg', 'assets/wise_10.jpeg', 'assets/wise_11.jpeg', 'assets/wise_12.jpeg', 'assets/wise_13.jpeg', 'assets/wise_14.jpeg'], 'CottoniHome': ['assets/cottoni_01.jpeg', 'assets/cottoni_02.jpeg', 'assets/cottoni_03.jpeg', 'assets/cottoni_04.jpeg', 'assets/cottoni_05.jpeg', 'assets/cottoni_06.jpeg', 'assets/cottoni_07.jpeg', 'assets/cottoni_08.jpeg', 'assets/cottoni_09.jpeg', 'assets/cottoni_10.jpeg', 'assets/cottoni_11.jpeg', 'assets/cottoni_12.jpeg'], 'Koalacompany': [], 'Ahttyblanc': ['assets/ahtty_01.jpeg', 'assets/ahtty_02.jpeg', 'assets/ahtty_03.jpeg', 'assets/ahtty_04.jpeg', 'assets/ahtty_05.jpeg', 'assets/ahtty_06.jpeg', 'assets/ahtty_07.jpeg']};
+const brandButtons=[...document.querySelectorAll('.brand-link')];
+const brandPanel=document.getElementById('brandGalleryPanel');
+const brandGallery=document.getElementById('brandGallery');
+const brandTitle=document.getElementById('brandPanelTitle');
+const brandClose=document.getElementById('brandPanelClose');
+
+brandButtons.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const key=btn.dataset.brand;
+    const data=brandPhotos[key]||[];
+    brandTitle.textContent=btn.querySelector('h3').textContent;
+    brandGallery.innerHTML=data.map(src=>`<figure class="card"><img src="${src}" alt="${brandTitle.textContent}"></figure>`).join('');
+    brandPanel.classList.add('open');
+    brandPanel.scrollIntoView({behavior:'smooth',block:'start'});
+    attachLightboxImages();
+  });
+});
+if(brandClose) brandClose.addEventListener('click',()=>brandPanel.classList.remove('open'));
+
+let currentPics=[], currentIndex=0;
+const lb=document.getElementById('lb'), big=document.getElementById('big');
+function attachLightboxImages(){
+  currentPics=[...document.querySelectorAll('.card img')];
+  currentPics.forEach((p,n)=>p.onclick=()=>showBig(n));
+}
+function showBig(n){
+  if(!currentPics.length)return;
+  currentIndex=(n+currentPics.length)%currentPics.length;
+  big.src=currentPics[currentIndex].src;
+  lb.classList.add('open');
+}
+const closeLb=document.querySelector('.close'), prevLb=document.querySelector('.prev'), nextLb=document.querySelector('.next');
+if(closeLb)closeLb.onclick=()=>lb.classList.remove('open');
+if(prevLb)prevLb.onclick=()=>showBig(currentIndex-1);
+if(nextLb)nextLb.onclick=()=>showBig(currentIndex+1);
+lb.onclick=e=>{if(e.target===lb)lb.classList.remove('open')};
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')lb.classList.remove('open');
+  if(e.key==='ArrowLeft')showBig(currentIndex-1);
+  if(e.key==='ArrowRight')showBig(currentIndex+1);
+});
+attachLightboxImages();
+
+</script>
+</body></html>
