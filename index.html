@@ -1,10 +1,54 @@
+<!--
+============================================================
+[에프존 홈페이지 - 수정용 코드]
+============================================================
+※ 아래 주석은 화면이나 홈페이지 기능에 영향을 주지 않습니다.
+
+[우리 홈페이지 작업 기준]
+1. 화면에 보이는 문구는 BODY 영역에서 수정합니다.
+2. 글씨 크기/굵기/색상/위치/간격은 STYLE(CSS)에서 수정합니다.
+3. 사진은 assets 폴더와 HTML의 src 경로를 확인합니다.
+4. 전화번호는 href="tel:..." 부분을 수정합니다.
+5. 이메일은 href="mailto:..." 부분을 수정합니다.
+6. 네이버 지도는 map.naver.com 링크를 수정합니다.
+7. 모바일 메뉴, Gallery MORE, Brand 사진, 큰사진 보기는 JAVASCRIPT 영역입니다.
+8. 요청한 부분 외의 기존 기능은 임의로 변경하지 않습니다.
+9. 사진을 계속 추가할 경우 assets 안에서 종류별 하위 폴더로 관리하는 것을 권장합니다.
+
+[에프존 사진 구조]
+- Gallery: galleryPreview / galleryAll
+- Brand: brandPhotos
+- BabyDorme: assets/baby_XX.jpeg
+- Wisemama: assets/wise_XX.jpeg
+- CotoniHome: assets/cottoni_XX.jpeg
+- Ahttyblanc: assets/ahtty_XX.jpeg
+- Koala company: 현재 사진 없음. 나중에 추가 가능.
+
+[직접 수정할 때]
+- 문구 수정: Ctrl + F로 화면의 문구를 검색
+- 글씨 크기 수정: 해당 class의 font-size 검색
+- 위치/간격 수정: margin / padding / gap 검색
+- 전화번호 수정: tel: 검색
+- 이메일 수정: mailto: 검색
+- 지도 수정: map.naver.com 검색
+- 브랜드 사진 추가: brandPhotos 안에서 해당 브랜드 배열에 사진 경로 추가
+============================================================
+-->
+
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>에프존</title><style>
+/* ===== CSS / 공통 기본 설정 ===== */
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,"Noto Sans KR",sans-serif;color:#222}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}.wrap{width:min(1180px,92%);margin:auto}
+/* ===== CSS / 상단 메뉴 ===== */
 header{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #eee}.nav{height:74px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:28px;font-weight:900}nav{display:flex;gap:26px;font-weight:700}.menu{display:none;border:0;background:none;font-size:30px;cursor:pointer;padding:8px;line-height:1;position:relative;z-index:10001}
+/* ===== CSS / 첫 화면 ===== */
 .hero{padding:56px 0;background:#fafafa}.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}.hero-photo{display:grid;grid-template-columns:1fr 1fr;gap:12px}.hero-photo img{aspect-ratio:1;object-fit:cover;border-radius:16px}.eyebrow{font-size:13px;letter-spacing:2px;font-weight:800}h1{font-size:clamp(42px,6vw,72px);margin:14px 0}h2{font-size:38px;margin:10px 0 18px}.muted{color:#777;line-height:1.8}
-section{padding:78px 0}.gallery,.brand-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{margin:0;border:1px solid #eee;border-radius:14px;overflow:hidden}.card img{width:100%;aspect-ratio:1;object-fit:cover}.card figcaption{padding:12px 14px;font-weight:700}.extra{display:none}.extra.open{display:grid}.more{display:block;margin:28px auto 0;padding:12px 24px;border:1px solid #222;border-radius:999px;background:#fff;font-weight:800}.brand-card{padding:28px;border:1px solid #eee;border-radius:16px}.contact{background:#08233f;color:#fff}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}.info{display:grid;gap:14px}footer{padding:30px 0;border-top:1px solid #eee;color:#777}
+section{padding:78px 0}/* ===== CSS / Gallery·Brand ===== */
+.gallery,.brand-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{margin:0;border:1px solid #eee;border-radius:14px;overflow:hidden}.card img{width:100%;aspect-ratio:1;object-fit:cover}.card figcaption{padding:12px 14px;font-weight:700}.extra{display:none}.extra.open{display:grid}.more{display:block;margin:28px auto 0;padding:12px 24px;border:1px solid #222;border-radius:999px;background:#fff;font-weight:800}.brand-card{padding:28px;border:1px solid #eee;border-radius:16px}/* ===== CSS / Contact us ===== */
+.contact{background:#08233f;color:#fff}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}.info{display:grid;gap:14px}footer{padding:30px 0;border-top:1px solid #eee;color:#777}
+/* ===== CSS / 큰사진 보기 ===== */
 .lightbox{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.9);align-items:center;justify-content:center}.lightbox.open{display:flex}.lightbox img{max-width:92vw;max-height:88vh}.lb{position:absolute;color:#fff;background:none;border:0;font-size:40px}.close{right:18px;top:8px}.prev{left:15px;top:50%}.next{right:15px;top:50%}
+/* ===== CSS / 모바일 화면·삼선 메뉴 ===== */
 @media(max-width:800px){nav{display:none}header.open nav{display:flex;position:absolute;top:74px;left:0;right:0;background:#fff;flex-direction:column;padding:10px 6%;z-index:10000;box-shadow:0 6px 12px rgba(0,0,0,.08);pointer-events:auto}nav a{padding:14px 0;display:block;touch-action:manipulation}.menu{display:block;position:relative;z-index:10001;pointer-events:auto;touch-action:manipulation}.hero-grid{grid-template-columns:1fr}.gallery,.brand-grid{grid-template-columns:repeat(2,1fr);gap:10px}.card figcaption{display:none}.contact-grid{grid-template-columns:1fr}section{padding:56px 0}}
 
 .contact{background:#000;color:#fff}
@@ -25,6 +69,7 @@ section{padding:78px 0}.gallery,.brand-grid{display:grid;grid-template-columns:r
 .contact .info > div + div{margin-top:22px}
 .brand-link{font:inherit;text-align:left;cursor:pointer}
 .brand-link span{display:block;margin-top:12px;color:#777;font-size:14px}
+/* ===== CSS / Brand 사진 패널 ===== */
 .brand-gallery-panel{display:none;margin-top:34px}
 .brand-gallery-panel.open{display:block}
 .brand-panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
@@ -45,7 +90,7 @@ header .logo,header nav a{color:#fff}
 .menu{color:#fff}
 
 
-/* Contact us final color override */
+/* ===== CSS / Contact us 최종 색상 ===== */
 section.contact#contact {
   background-color: #08233f !important;
   color: #ffffff !important;
@@ -61,6 +106,7 @@ section.contact#contact .ad-refusal {
 }
 
 
+/* ===== CSS / 모바일 메뉴 펼침 상태 ===== */
 @media(max-width:800px){
   header.open nav{background:#fff !important}
   header.open nav a{color:#08233f !important}
@@ -74,15 +120,18 @@ section.contact#contact .ad-refusal {
 <link rel="manifest" href="site.webmanifest">
 <meta name="theme-color" content="#08233f">
 </head><body>
+<!-- ===== HEADER / 상단 메뉴 ===== -->
 <header id="header"><div class="wrap nav"><a class="logo" href="#home">에프존</a><nav>
 <a href="#products">Gallery</a>
 <a href="#brands">Brand</a>
 <a href="#contact">Contact us</a>
 </nav><button class="menu" id="menu">☰</button></div></header>
+<!-- ===== HERO / 첫 화면 ===== -->
 <section class="hero" id="home"><div class="wrap hero-grid"><div><div class="eyebrow">FZONE</div><h1>에프존</h1><p class="muted">유아 및 반려동물 침구류 전문 제조업체입니다.</p></div><div class="hero-photo"><img src="assets/wise_13.jpeg" alt="에프존 대표 이미지"></div></div></section>
 
 
 
+<!-- ===== GALLERY / 전체 사진 ===== -->
 <section id="products">
   <div class="wrap">
     <div class="eyebrow">GALLERY</div>
@@ -97,6 +146,7 @@ section.contact#contact .ad-refusal {
   </div>
 </section>
 
+<!-- ===== BRAND / 브랜드 목록 및 브랜드별 사진 ===== -->
 <section id="brands">
   <div class="wrap">
     <div class="eyebrow">BRAND</div>
@@ -113,13 +163,20 @@ section.contact#contact .ad-refusal {
     </div>
   </div>
 </section>
+<!-- ===== CONTACT US / 주소·전화·팩스·이메일 ===== -->
 <section class="contact" id="contact"><div class="wrap">
 <h2>Contact us</h2>
 <div class="contact-grid">
 <div class="info">
-<div><b>주소</b><br><a href="https://map.naver.com/p/search/경기도 김포시 양곡3로1번길81 1층" target="_blank" rel="noopener">경기도 김포시 양곡3로1번길81 1층</a></div>
-<div><b>전화</b><br><a href="tel:0319977624">031-997-7624</a></div><div><b>팩스</b><br>031-997-7625</div>
-<div><b>이메일</b><br><a href="mailto:linect@naver.com">linect@naver.com</a></div>
+<div><b>주소</b><br>
+<!-- 네이버 지도: 아래 href의 검색 주소와 화면 주소를 함께 수정 -->
+<a href="https://map.naver.com/p/search/경기도 김포시 양곡3로1번길81 1층" target="_blank" rel="noopener">경기도 김포시 양곡3로1번길81 1층</a></div>
+<div><b>전화</b><br>
+<!-- 전화번호: tel: 뒤 숫자와 화면 번호를 함께 수정 -->
+<a href="tel:0319977624">031-997-7624</a></div><div><b>팩스</b><br>031-997-7625</div>
+<div><b>이메일</b><br>
+<!-- 이메일: mailto: 뒤 주소와 화면 주소를 함께 수정 -->
+<a href="mailto:linect@naver.com">linect@naver.com</a></div>
 </div>
 <div class="info">
 <div><b>대표</b><br>안상연</div>
@@ -128,8 +185,11 @@ section.contact#contact .ad-refusal {
 </div>
 </div></div><div class="ad-refusal">광고업체 연락은 정중히 사양합니다.</div></section>
 
+<!-- ===== FOOTER ===== -->
 <footer><div class="wrap">에프존 · 대표 안상연 · 사업자등록번호 128-35-48696 · 통신판매업 신고번호 제2012-경기김포-0495호</div></footer>
+<!-- ===== LIGHTBOX / 큰사진 보기 ===== -->
 <div class="lightbox" id="lb"><button class="lb close">×</button><button class="lb prev">‹</button><img id="big" src=""><button class="lb next">›</button></div>
+<!-- ===== JAVASCRIPT / 모바일 삼선 메뉴 ===== -->
 <script>
 
 const h = document.getElementById('header');
@@ -149,6 +209,7 @@ if (h && menuButton) {
   });
 }
 
+/* ===== JAVASCRIPT / Gallery MORE·CLOSE ===== */
 const galleryMore=document.getElementById('galleryMore');
 const galleryAll=document.getElementById('galleryAll');
 if(galleryMore){
@@ -158,6 +219,13 @@ if(galleryMore){
   });
 }
 
+/* ===== JAVASCRIPT / Brand별 사진 연결 ===== */
+/*
+  [브랜드 사진 추가 방법]
+  예: BabyDorme 사진을 추가하려면 아래 배열 끝에
+  'assets/baby_11.jpeg'처럼 경로를 하나 추가합니다.
+  Koalacompany는 현재 [] 상태이며 사진을 추가하면 바로 표시할 수 있습니다.
+*/
 const brandPhotos = {'BabyDorme': ['assets/baby_01.jpeg', 'assets/baby_02.jpeg', 'assets/baby_03.jpeg', 'assets/baby_04.jpeg', 'assets/baby_05.jpeg', 'assets/baby_06.jpeg', 'assets/baby_07.jpeg', 'assets/baby_08.jpeg', 'assets/baby_09.jpeg', 'assets/baby_10.jpeg'], 'Wisemama': ['assets/wise_01.jpeg', 'assets/wise_02.jpeg', 'assets/wise_03.jpeg', 'assets/wise_04.jpeg', 'assets/wise_05.jpeg', 'assets/wise_06.jpeg', 'assets/wise_07.jpeg', 'assets/wise_08.jpeg', 'assets/wise_09.jpeg', 'assets/wise_10.jpeg', 'assets/wise_11.jpeg', 'assets/wise_12.jpeg', 'assets/wise_13.jpeg', 'assets/wise_14.jpeg'], 'CottoniHome': ['assets/cottoni_01.jpeg', 'assets/cottoni_02.jpeg', 'assets/cottoni_03.jpeg', 'assets/cottoni_04.jpeg', 'assets/cottoni_05.jpeg', 'assets/cottoni_06.jpeg', 'assets/cottoni_07.jpeg', 'assets/cottoni_08.jpeg', 'assets/cottoni_09.jpeg', 'assets/cottoni_10.jpeg', 'assets/cottoni_11.jpeg', 'assets/cottoni_12.jpeg'], 'Koalacompany': [], 'Ahttyblanc': ['assets/ahtty_01.jpeg', 'assets/ahtty_02.jpeg', 'assets/ahtty_03.jpeg', 'assets/ahtty_04.jpeg', 'assets/ahtty_05.jpeg', 'assets/ahtty_06.jpeg', 'assets/ahtty_07.jpeg']};
 const brandButtons=[...document.querySelectorAll('.brand-link')];
 const brandPanel=document.getElementById('brandGalleryPanel');
@@ -178,6 +246,7 @@ brandButtons.forEach(btn=>{
 });
 if(brandClose) brandClose.addEventListener('click',()=>brandPanel.classList.remove('open'));
 
+/* ===== JAVASCRIPT / 큰사진 보기·이전·다음 ===== */
 let currentPics=[], currentIndex=0;
 const lb=document.getElementById('lb'), big=document.getElementById('big');
 function attachLightboxImages(){
